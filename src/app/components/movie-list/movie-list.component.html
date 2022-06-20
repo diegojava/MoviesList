@@ -1,0 +1,16 @@
+<div class="container list-container">
+    <input type="text" placeholder="Type to filter..." class="form-control" (input)="filterSearch($event)">
+    <button (click)="filterFavorites()" class="btn btn-dark form-control mt-2">{{ favoriteTag }}</button>
+    <div *ngFor="let movie of moviesList" class="list-item">
+        <!-- <button (click)="openModal(movie)"></button> -->
+        <div class="pointer" (click)="openModal(movie)">
+            <img class="movie-img" src="{{ movie.image }}">
+            <span class="movie-title">{{ movie.title }} </span>
+        </div>
+        <!-- <button (click)="addFavorite(movie.id)">Favorito</button> -->
+        <img (click)="movie.isFavorite ? removeFavorite(movie.id) : addFavorite(movie.id)" class="btn-favorite" src="{{ movie.isFavorite ? likeImg : addFavImg }}">
+        <!-- <img *ngIf="!movie.isFavorite" (click)="addFavorite(movie.id)" class="btn-favorite" src="{{ addFavImg }}"> -->
+    </div>
+</div>
+
+<app-modal #modal [modalConfig]="modalConfig"></app-modal>

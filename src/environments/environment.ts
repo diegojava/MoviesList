@@ -2,8 +2,10 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// k_r45g9qpi -- k_irla67zt
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://imdb-api.com/en/API/MostPopularMovies/k_irla67zt'
 };
 
 /*

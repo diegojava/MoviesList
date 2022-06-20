@@ -1,0 +1,38 @@
+.list-container {
+    margin: 20px
+}
+
+.list-container :where(.list-item) {
+    border: 2px #000 solid;
+    border-style: none none solid none;
+    margin-top: 5px;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.list-item :where(.movie-img) {
+    width: 90px;
+    height: 110px;
+}
+
+.list-item :where(.movie-title) {
+    margin-left: 20px;
+    font-weight: 600;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.btn-favorite {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+
+.pointer {
+    cursor: pointer;
+}

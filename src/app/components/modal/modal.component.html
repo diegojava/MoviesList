@@ -1,0 +1,28 @@
+<ng-template #modal>
+    <div class="modal-header">
+      <h5 class="modal-title">{{ modalConfig.title }}</h5>
+      <img 
+          (click)="toggleFavorite(modalConfig.id, modalConfig.isFavorite || false)" 
+          class="btn-favorite float-end" 
+          src="{{ modalConfig.isFavorite ? likeImg : addFavImg }}"
+        >
+    </div>
+    <div class="modal-body">
+        <div class="movie-content mt-4">
+          <img class="modal-image" src="{{ modalConfig.image }}" alt="{{ modalConfig.title }}">
+          <span class="modal-text">Crew: {{ modalConfig.crew }}</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button"
+              class="btn btn-outline-secondary"
+              (click)="goToIMDB(modalConfig.url)">
+        {{ 'Go to IMDB profile' }}
+      </button>
+      <button type="button"
+              class="btn btn-outline-primary"
+              (click)="close()">
+        {{ 'Close' }}
+      </button>
+    </div>
+  </ng-template>

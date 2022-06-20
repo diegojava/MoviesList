@@ -1,0 +1,25 @@
+.modal-image {
+    width: 120px;
+    height: 180px;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.modal-text {
+    margin-left: 10px;
+}
+
+.btn-favorite {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
