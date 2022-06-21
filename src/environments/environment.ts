@@ -3,9 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 // k_r45g9qpi -- k_irla67zt
+
+function apiKey() {
+  let apis = ['k_irla67zt', 'k_r45g9qpi']
+  let index = Math.floor(Math.random() * apis.length)
+  return apis[index]
+}
+
 export const environment = {
   production: false,
-  apiUrl: 'https://imdb-api.com/en/API/MostPopularMovies/k_irla67zt'
+  apiUrl: 'https://imdb-api.com/en/API/MostPopularMovies/' + apiKey()
 };
 
 /*
