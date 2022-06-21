@@ -1,6 +1,7 @@
 const api = () => {
   let apis = ['k_irla67zt', 'k_r45g9qpi']
-  return Math.floor(Math.random() * apis.length)
+  let index = Math.floor(Math.random() * apis.length)
+  return apis[index]
 }
 
 export const environment = {
