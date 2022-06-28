@@ -1,4 +1,6 @@
 .list-container {
+    display: flex;
+    flex-direction: column;
     margin: 20px
 }
 
@@ -9,10 +11,7 @@
 }
 
 .list-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex: 33.33%;
     padding: 10px;
 }
 

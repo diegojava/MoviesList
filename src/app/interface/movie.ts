@@ -1,8 +1,17 @@
 export interface Movie {
     id: string;
-    title: string;
-    image: string;
-    crew: string;
-    url: string;
+    name: string;
+    image: any;
+    summary: string;
+    officialSite: string;
+    premiered: string;
+    ended?: string;
+    rating: any;
+    genres: Genre[];
     isFavorite?: boolean;
 }
+
+interface Genre {
+    genre: string
+}
+

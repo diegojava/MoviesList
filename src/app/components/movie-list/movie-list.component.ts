@@ -51,18 +51,23 @@ export class MovieListComponent implements OnInit {
   async getAllMovies() {
     this.moviesList = [];
     await this.http.get<any>(environment.apiUrl).subscribe((res) => {
-      res.items.slice(0, this.movieLimit).map((movie: Movie) => {
+      res.slice(0, this.movieLimit).map((movie: Movie) => {
         this.movie = {
           id: movie.id,
-          title: movie.title,
-          image: movie.image,
-          crew: movie.crew,
-          isFavorite: false,
-          url: 'https://www.imdb.com/title/' + movie.id
+          name: movie.name,
+          image: movie.image.original,
+          genres: movie.genres,
+          premiered: this.getOnlyYear(movie.premiered),
+          ended: this.getOnlyYear(movie.ended),
+          rating: movie.rating,
+          summary: movie.summary,
+          //isFavorite: false,
+          officialSite: movie.officialSite
         }
         this.moviesList.push(this.movie)
       })
       this.readFavs()
+      //console.log(this.moviesList)
       this.movieListCopy = this.moviesList
       return this.moviesList;
     })
@@ -92,13 +97,22 @@ export class MovieListComponent implements OnInit {
     this.readFavs()
   }
 
+  getOnlyYear(date?: string) {
+    let year = date?.split('-')[0]
+    return year  || 'Current';
+  }
+
   async openModal(movie: Movie) {
     this.modalConfig = { 
       id: movie.id,
-      title: movie.title, 
-      crew: movie.crew, 
+      name: movie.name, 
+      summary: movie.summary, 
+      genres: movie.genres,
+      rating: movie.rating.average / 2,
+      premiered: movie.premiered,
+      ended: movie.ended,
       image: movie.image,
-      url: movie.url, 
+      officialSite: movie.officialSite, 
       isFavorite: movie.isFavorite || false 
     };
     return await this.modalComponent.open()
@@ -106,13 +120,13 @@ export class MovieListComponent implements OnInit {
 
   filterSearch(e: any) {
     const search = e.target.value
-    this.moviesList = this.movieListCopy.filter(({ title }: Movie) => {
-      return title.toLowerCase().includes(search.toLowerCase())
+    this.moviesList = this.movieListCopy.filter(({ name }: Movie) => {
+      return name.toLowerCase().includes(search.toLowerCase())
     })
   }
 
   filterFavorites() {
-    if(this.favoriteFlag) {
+    if (this.favoriteFlag) {
       this.favoriteFlag= false
       this.favoriteTag = 'View Favorites'
       this.moviesList = this.movieListCopy.filter(({ isFavorite }: Movie) => {

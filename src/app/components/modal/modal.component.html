@@ -1,6 +1,6 @@
 <ng-template #modal>
     <div class="modal-header">
-      <h5 class="modal-title">{{ modalConfig.title }}</h5>
+      <h5 class="modal-title">{{ modalConfig.name }} ({{ modalConfig.premiered }} - {{ modalConfig.ended }})</h5>
       <img 
           (click)="toggleFavorite(modalConfig.id, modalConfig.isFavorite || false)" 
           class="btn-favorite float-end" 
@@ -9,14 +9,27 @@
     </div>
     <div class="modal-body">
         <div class="movie-content mt-4">
-          <img class="modal-image" src="{{ modalConfig.image }}" alt="{{ modalConfig.title }}">
-          <span class="modal-text">Crew: {{ modalConfig.crew }}</span>
+          <img class="modal-image" src="{{ modalConfig.image }}" alt="{{ modalConfig.name }}">
+          <div class="movie-summary">
+            <div class="modal-text" [innerHtml]=modalConfig.summary></div>
+            <div class="modal-text">
+              <span>Genres: </span> 
+              <span>{{ formatGenres(modalConfig.genres) }}</span>
+            </div>
+            <div class="modal-text">
+              <span>Rating: </span> 
+              
+              <ngb-rating [rate]=modalConfig.rating></ngb-rating>
+              
+
+            </div>
+          </div>
         </div>
     </div>
     <div class="modal-footer">
       <button type="button"
               class="btn btn-outline-secondary"
-              (click)="goToIMDB(modalConfig.url)">
+              (click)="goToIMDB(modalConfig.officialSite)">
         {{ 'Go to IMDB profile' }}
       </button>
       <button type="button"
