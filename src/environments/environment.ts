@@ -12,7 +12,7 @@ function apiKey() {
 
 export const environment = {
   production: false,
-  //apiUrl: 'https://imdb-api.com/en/API/MostPopularMovies/' + apiKey()
+  //apiUrl: 'https://imdb-api.com/en/API/MostPopularMovies/' + apiKey(),
   apiUrl: 'http://api.tvmaze.com/shows'
 };
 
